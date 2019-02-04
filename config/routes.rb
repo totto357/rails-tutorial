@@ -18,4 +18,7 @@ Rails.application.routes.draw do
 
   # ユーザ情報
   resources :users
+
+  # アカウントの有効化
+  resources :account_activations, only: [:edit]
 end
