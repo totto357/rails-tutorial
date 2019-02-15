@@ -85,6 +85,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
               password_confirmation: "foobar",
             },
           }
+    assert_equal user.reload.reset_digest, nil
     assert is_logged_in?
     assert_not flash.empty?
     assert_redirected_to user
