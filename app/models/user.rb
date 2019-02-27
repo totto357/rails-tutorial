@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   validates :name, presence: true, length: {maximum: 50}
@@ -65,6 +67,11 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     self.reset_sent_at < 2.hours.ago
+  end
+
+  # TODO 仮実装
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private

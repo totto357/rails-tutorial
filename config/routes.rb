@@ -26,4 +26,7 @@ Rails.application.routes.draw do
 
   # パスワードリセット
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  # マイクロポスト
+  resources :microposts, only: [:create, :destroy]
 end
